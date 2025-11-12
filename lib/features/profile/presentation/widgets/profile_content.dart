@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../core/auth/data/datasources/user_storage.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/router/app_router.dart';
+import '../pages/terms_conditions_page.dart';
 import 'profile_title.dart';
 import 'profile_header.dart';
 import 'profile_stats_card.dart';
@@ -61,7 +62,12 @@ class ProfileContent extends StatelessWidget {
             icon: Iconsax.document_text,
             title: 'Términos y condiciones',
             onTap: () {
-              // TODO: Navigate to terms
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const TermsConditionsPage(),
+                ),
+              );
             },
           ),
           ProfileMenuItem(

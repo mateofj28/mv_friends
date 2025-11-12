@@ -70,41 +70,64 @@ class _ProfileHeaderState extends State<ProfileHeader> {
             ),
           ),
           const SizedBox(height: 12),
-          // Tier badges
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TierBadge(
-                label: 'Bronce',
-                color: AppColors.bronze,
-                isActive: true,
-              ),
-              SizedBox(width: 8),
-              TierBadge(
-                label: 'Plata',
-                color: AppColors.silver,
-                isActive: false,
-              ),
-              SizedBox(width: 8),
-              TierBadge(
-                label: 'Oro',
-                color: AppColors.gold,
-                isActive: false,
-              ),
-            ],
+          // Tier badge
+          const Center(
+            child: TierBadge(
+              label: 'Oro',
+              color: AppColors.gold,
+              isActive: true,
+            ),
           ),
           const SizedBox(height: 16),
-          // Progress bar
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: LinearProgressIndicator(
-              value: 0.6,
-              minHeight: 8,
-              backgroundColor: AppColors.background,
-              valueColor: const AlwaysStoppedAnimation<Color>(
-                AppColors.primaryBlue,
+          // Progress bar personalizada
+          Column(
+            children: [
+              Stack(
+                children: [
+                  // Barra de fondo (parte faltante)
+                  Container(
+                    height: 12,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  // Barra de progreso (parte completada)
+                  FractionallySizedBox(
+                    widthFactor: 0.6,
+                    child: Container(
+                      height: 12,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryBlue,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
+              const SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '6 de 10 referidos',
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.primaryBlue,
+                    ),
+                  ),
+                  Text(
+                    'Faltan 4',
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ],
       ),

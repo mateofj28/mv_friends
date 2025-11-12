@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iconsax/iconsax.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class ProfileStatsCard extends StatelessWidget {
@@ -24,11 +23,6 @@ class ProfileStatsCard extends StatelessWidget {
                   color: AppColors.darkNavy,
                 ),
               ),
-              const Icon(
-                Iconsax.arrow_right_3,
-                color: AppColors.textSecondary,
-                size: 20,
-              ),
             ],
           ),
           const SizedBox(height: 16),
@@ -36,24 +30,17 @@ class ProfileStatsCard extends StatelessWidget {
             children: [
               Expanded(
                 child: _StatCard(
-                  value: '3.00',
+                  value: '5',
                   label: 'Total de\nreferidos',
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _StatCard(
-                  value: '2.50',
+                  value: '1',
                   label: 'Referidos\nexitosos',
                 ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _StatCard(
-                  value: '3.30',
-                  label: 'Total de\nrecompensas',
-                ),
-              ),
+              ),              
             ],
           ),
         ],

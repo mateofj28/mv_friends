@@ -2,41 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/auth/data/datasources/user_storage.dart';
-import '../../../../core/di/injection.dart';
-import 'tier_badge.dart';
 
-class UserProfileCard extends StatefulWidget {
-  const UserProfileCard({super.key});
+class ReferralUserHeader extends StatelessWidget {
+  final String userName;
+  final String phone;
+  final String email;
+  final String referralDate;
 
-  @override
-  State<UserProfileCard> createState() => _UserProfileCardState();
-}
-
-class _UserProfileCardState extends State<UserProfileCard> {
-  String _userName = 'Usuario';
-
-  @override
-  void initState() {
-    super.initState();
-    _loadUserName();
-  }
-
-  Future<void> _loadUserName() async {
-    final userStorage = getIt<UserStorage>();
-    final user = await userStorage.getUser();
-    if (user != null && mounted) {
-      setState(() {
-        _userName = user.nombre;
-      });
-    }
-  }
+  const ReferralUserHeader({
+    super.key,
+    required this.userName,
+    required this.phone,
+    required this.email,
+    required this.referralDate,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
@@ -52,8 +37,8 @@ class _UserProfileCardState extends State<UserProfileCard> {
         children: [
           // Avatar
           Container(
-            width: 64,
-            height: 64,
+            width: 80,
+            height: 80,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: AppColors.background,
@@ -64,7 +49,7 @@ class _UserProfileCardState extends State<UserProfileCard> {
             ),
             child: const Icon(
               Iconsax.user,
-              size: 32,
+              size: 40,
               color: AppColors.primaryBlue,
             ),
           ),
@@ -75,23 +60,39 @@ class _UserProfileCardState extends State<UserProfileCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  _userName,
+                  userName,
                   style: GoogleFonts.poppins(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.w600,
                     color: AppColors.darkNavy,
                   ),
                 ),
                 const SizedBox(height: 8),
-                const TierBadge(
-                  label: 'Oro',
-                  color: AppColors.gold,
-                  isActive: true,
+                Text(
+                  phone,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                Text(
+                  email,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Fecha de referencia: $referralDate',
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    color: AppColors.textSecondary,
+                  ),
                 ),
               ],
             ),
           ),
-          // Arrow
           const Icon(
             Iconsax.arrow_right_3,
             color: AppColors.textSecondary,

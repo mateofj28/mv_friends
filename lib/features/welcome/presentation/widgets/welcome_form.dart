@@ -101,7 +101,7 @@ class _WelcomeFormState extends State<WelcomeForm> {
             CustomTextField(
               controller: _documentController,
               label: 'Ingresa Documento',
-              hint: 'Ingresa Numero Documento',
+              hint: 'Cedula',
               icon: Iconsax.card,
               enabled: !isLoading,
               maxLength: 10,

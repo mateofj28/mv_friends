@@ -31,8 +31,36 @@ class _ReferralPageState extends State<ReferralPage> {
   }
 
   void _submitReferral() {
-    // TODO: Implement referral submission
-    Navigator.of(context).pop();
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        title: const Icon(
+          Icons.check_circle,
+          color: Colors.green,
+          size: 64,
+        ),
+        content: const Text(
+          'Tu amigo fue registrado exitosamente',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // Cerrar dialog
+              Navigator.pop(context); // Volver a home
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
