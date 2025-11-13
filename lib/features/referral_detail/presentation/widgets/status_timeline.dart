@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class StatusTimeline extends StatelessWidget {
   final int currentStep;
@@ -24,7 +24,7 @@ class StatusTimeline extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20),
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -42,18 +42,18 @@ class StatusTimeline extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 26,
               fontWeight: FontWeight.w600,
-              color: AppColors.darkNavy,
+              color: context.darkNavy,
             ),
           ),
           const SizedBox(height: 40),
           // Timeline completo en una sola fila
-          _buildTimelineRow(steps, currentStep),
+          _buildTimelineRow(steps, currentStep, context),
         ],
       ),
     );
   }
 
-  Widget _buildTimelineRow(List<Map<String, dynamic>> steps, int currentStep) {
+  Widget _buildTimelineRow(List<Map<String, dynamic>> steps, int currentStep, BuildContext context) {
     return Column(
       children: List.generate(
         steps.length,
@@ -76,16 +76,16 @@ class StatusTimeline extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: isActive
-                          ? const Color(0xFF00BCD4)
+                          ? context.primaryCyan
                           : isCompleted
-                              ? AppColors.primaryBlue
-                              : AppColors.white,
+                              ? context.primaryBlue
+                              : context.surface,
                       border: Border.all(
                         color: isPending
-                            ? const Color(0xFFE0E0E0)
+                            ? context.textLight
                             : isActive
-                                ? const Color(0xFF00BCD4)
-                                : AppColors.primaryBlue,
+                                ? context.primaryCyan
+                                : context.primaryBlue,
                         width: 3,
                       ),
                     ),
@@ -96,8 +96,8 @@ class StatusTimeline extends StatelessWidget {
                           fontSize: 22,
                           fontWeight: FontWeight.w600,
                           color: isActive || isCompleted
-                              ? AppColors.white
-                              : AppColors.textSecondary,
+                              ? context.textWhite
+                              : context.textSecondary,
                         ),
                       ),
                     ),
@@ -111,10 +111,10 @@ class StatusTimeline extends StatelessWidget {
                         fontSize: 16,
                         fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
                         color: isActive
-                            ? AppColors.darkNavy
+                            ? context.darkNavy
                             : isPending
-                                ? AppColors.textSecondary
-                                : AppColors.primaryBlue,
+                                ? context.textSecondary
+                                : context.primaryBlue,
                       ),
                     ),
                   ),
@@ -127,8 +127,8 @@ class StatusTimeline extends StatelessWidget {
                     width: 3,
                     height: 40,
                     color: isCompleted
-                        ? AppColors.primaryBlue
-                        : const Color(0xFFE0E0E0),
+                        ? context.primaryBlue
+                        : context.textLight,
                   ),
                 ),
             ],

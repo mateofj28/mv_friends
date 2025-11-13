@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../widgets/referral_header.dart';
 import '../widgets/referral_text_field.dart';
 import '../widgets/referral_question.dart';
@@ -65,7 +65,7 @@ class _ReferralPageState extends State<ReferralPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

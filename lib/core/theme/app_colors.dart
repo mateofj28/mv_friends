@@ -6,7 +6,7 @@ class AppColors {
   static const Color primaryCyan = Color(0xFF06B6D4);
   static const Color lightCyan = Color(0xFF22D3EE);
   static const Color darkNavy = Color(0xFF0F172A);
-  static const Color cardBlue = Color(0xFF1E293B);
+  static const Color cardBlue = Color(0xFFABDBF7);
   
   // Accent colors
   static const Color orange = Color(0xFFFF6B35);

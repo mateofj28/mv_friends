@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class ReferralTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -30,28 +30,28 @@ class ReferralTextField extends StatelessWidget {
             : null,
         style: GoogleFonts.poppins(
           fontSize: 16,
-          color: AppColors.darkNavy,
+          color: context.darkNavy,
         ),
         decoration: InputDecoration(
           counterText: '',
           hintText: hint,
           hintStyle: GoogleFonts.poppins(
             fontSize: 16,
-            color: AppColors.textLight,
+            color: context.textLight,
           ),
           filled: true,
-          fillColor: AppColors.white,
+          fillColor: context.surface,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
-              color: AppColors.background,
+              color: context.background,
               width: 1,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(
-              color: AppColors.primaryBlue,
+            borderSide: BorderSide(
+              color: context.primaryBlue,
               width: 2,
             ),
           ),

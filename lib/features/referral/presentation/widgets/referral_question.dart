@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class ReferralQuestion extends StatelessWidget {
   final String question;
@@ -24,14 +24,14 @@ class ReferralQuestion extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: AppColors.darkNavy,
+            color: context.darkNavy,
           ),
         ),
         const SizedBox(height: 16),
         Row(
           children: [
             _RadioOption(
-              label: 'Sí',
+              label: 'SÃƒÆ’Ã‚Â­',
               isSelected: value,
               onTap: () => onChanged(true),
             ),
@@ -71,19 +71,19 @@ class _RadioOption extends StatelessWidget {
             height: 24,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: isSelected ? AppColors.primaryBlue : AppColors.background,
+              color: isSelected ? context.primaryBlue : context.background,
               border: Border.all(
                 color: isSelected
-                    ? AppColors.primaryBlue
-                    : AppColors.textSecondary,
+                    ? context.primaryBlue
+                    : context.textSecondary,
                 width: 2,
               ),
             ),
             child: isSelected
-                ? const Icon(
+                ? Icon(
                     Icons.circle,
                     size: 12,
-                    color: AppColors.white,
+                    color: context.surface,
                   )
                 : null,
           ),
@@ -93,7 +93,7 @@ class _RadioOption extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 16,
               fontWeight: FontWeight.w500,
-              color: AppColors.darkNavy,
+              color: context.darkNavy,
             ),
           ),
         ],

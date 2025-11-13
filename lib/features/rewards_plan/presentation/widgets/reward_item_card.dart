@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class RewardItemCard extends StatelessWidget {
   final String name;
@@ -19,15 +20,15 @@ class RewardItemCard extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: isLight
-              ? [const Color(0xFFE3F2FD), const Color(0xFFBBDEFB)]
-              : [const Color(0xFF90A4AE), const Color(0xFF78909C)],
+              ? [context.lightCyan, context.primaryCyan.withValues(alpha: 0.5)]
+              : [context.textSecondary.withValues(alpha: 0.6), context.textSecondary.withValues(alpha: 0.8)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -38,7 +39,7 @@ class RewardItemCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: Colors.white.withOpacity(0.3),
+            color: context.surface.withValues(alpha: 0.3),
             width: 1.5,
           ),
         ),
@@ -51,7 +52,7 @@ class RewardItemCard extends StatelessWidget {
               style: GoogleFonts.poppins(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
-                color: const Color(0xFF263238),
+                color: context.darkNavy,
                 letterSpacing: 0.3,
                 height: 1.3,
               ),
@@ -60,7 +61,7 @@ class RewardItemCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
+                color: context.surface.withValues(alpha: 0.4),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
@@ -68,7 +69,7 @@ class RewardItemCard extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 17,
                   fontWeight: FontWeight.w700,
-                  color: const Color(0xFF1A237E),
+                  color: context.primaryBlue,
                   letterSpacing: 0.5,
                 ),
               ),

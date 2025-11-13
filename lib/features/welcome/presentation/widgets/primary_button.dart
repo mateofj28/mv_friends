@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
@@ -20,9 +20,9 @@ class PrimaryButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: onPressed == null 
-              ? AppColors.buttonPrimary.withOpacity(0.5)
-              : AppColors.buttonPrimary,
-          foregroundColor: AppColors.primaryBlue,
+              ? context.buttonPrimary.withValues(alpha: 0.5)
+              : context.buttonPrimary,
+          foregroundColor: context.darkNavy,
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
           shape: RoundedRectangleBorder(
@@ -34,7 +34,7 @@ class PrimaryButton extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.w600,
-            color: AppColors.primaryBlue,
+            color: context.isDarkMode ? context.darkNavy : context.primaryBlue,
             height: 1.5,
           ),
           textAlign: TextAlign.center,

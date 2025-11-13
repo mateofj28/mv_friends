@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../core/auth/data/datasources/user_storage.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/router/app_router.dart';
+import '../../../settings/presentation/pages/theme_settings_page.dart';
 import '../pages/terms_conditions_page.dart';
 import 'profile_title.dart';
 import 'profile_header.dart';
@@ -58,6 +59,18 @@ class ProfileContent extends StatelessWidget {
           const ProfileStatsCard(),
           const SizedBox(height: 24),
           const SectionTitle(title: 'Configuración de cuenta'),
+          ProfileMenuItem(
+            icon: Iconsax.brush_2,
+            title: 'Apariencia',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ThemeSettingsPage(),
+                ),
+              );
+            },
+          ),
           ProfileMenuItem(
             icon: Iconsax.document_text,
             title: 'Términos y condiciones',

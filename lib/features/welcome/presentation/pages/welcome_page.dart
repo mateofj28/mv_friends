@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../widgets/welcome_form.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -7,7 +8,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: context.surface,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

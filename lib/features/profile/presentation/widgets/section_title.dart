@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
@@ -19,7 +19,7 @@ class SectionTitle extends StatelessWidget {
         style: GoogleFonts.poppins(
           fontSize: 20,
           fontWeight: FontWeight.w600,
-          color: AppColors.darkNavy,
+          color: context.darkNavy,
         ),
       ),
     );

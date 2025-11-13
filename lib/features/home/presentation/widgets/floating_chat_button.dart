@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class FloatingChatButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -14,11 +14,11 @@ class FloatingChatButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: onTap,
-      backgroundColor: AppColors.white,
+      backgroundColor: context.surface,
       elevation: 4,
-      child: const Icon(
+      child: Icon(
         Iconsax.message,
-        color: AppColors.darkNavy,
+        color: context.darkNavy,
         size: 28,
       ),
     );

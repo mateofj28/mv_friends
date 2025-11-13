@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class TierRequirements extends StatelessWidget {
   const TierRequirements({super.key});
@@ -11,7 +11,7 @@ class TierRequirements extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20),
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -28,7 +28,7 @@ class TierRequirements extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: AppColors.gold.withValues(alpha: 0.2),
+              color: context.gold.withValues(alpha: 0.2),
               shape: BoxShape.circle,
             ),
             child: Center(
@@ -37,7 +37,7 @@ class TierRequirements extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.gold,
+                  color: context.gold,
                 ),
               ),
             ),
@@ -48,7 +48,7 @@ class TierRequirements extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 12,
               fontWeight: FontWeight.w600,
-              color: AppColors.gold,
+              color: context.gold,
             ),
           ),
           const SizedBox(height: 16),
@@ -91,7 +91,7 @@ class _RequirementItem extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: AppColors.darkNavy,
+            color: context.darkNavy,
           ),
         ),
         const SizedBox(width: 4),
@@ -100,7 +100,7 @@ class _RequirementItem extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w400,
-            color: AppColors.primaryBlue,
+            color: context.primaryBlue,
           ),
         ),
       ],

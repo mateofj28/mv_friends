@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class CouponDisplay extends StatelessWidget {
   final String brandName;
@@ -27,9 +28,9 @@ class CouponDisplay extends StatelessWidget {
         children: [
           _buildSuccessMessage(),
           const SizedBox(height: 24),
-          _buildCouponCard(),
+          _buildCouponCard(context),
           const SizedBox(height: 24),
-          _buildNewCouponButton(),
+          _buildNewCouponButton(context),
         ],
       ),
     );
@@ -66,7 +67,7 @@ class CouponDisplay extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '¡Cupón generado!',
+                  'Â¡CupÃ³n generado!',
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -75,7 +76,7 @@ class CouponDisplay extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Tu cupón está listo para usar',
+                  'Tu cupÃ³n estÃ¡ listo para usar',
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     color: Colors.green.shade700,
@@ -89,10 +90,10 @@ class CouponDisplay extends StatelessWidget {
     );
   }
 
-  Widget _buildCouponCard() {
+  Widget _buildCouponCard(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: context.surface,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -104,15 +105,15 @@ class CouponDisplay extends StatelessWidget {
       ),
       child: Column(
         children: [
-          _buildCouponHeader(),
+          _buildCouponHeader(context),
           const Divider(height: 1),
-          _buildCouponBody(),
+          _buildCouponBody(context),
         ],
       ),
     );
   }
 
-  Widget _buildCouponHeader() {
+  Widget _buildCouponHeader(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -122,7 +123,7 @@ class CouponDisplay extends StatelessWidget {
             width: 60,
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: AppColors.background,
+              color: context.background,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Image.asset(
@@ -153,29 +154,29 @@ class CouponDisplay extends StatelessWidget {
     );
   }
 
-  Widget _buildCouponBody() {
+  Widget _buildCouponBody(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Column(
         children: [
-          _buildQRCode(),
+          _buildQRCode(context),
           const SizedBox(height: 24),
-          _buildCouponCode(),
+          _buildCouponCode(context),
           const SizedBox(height: 24),
-          _buildBarcode(),
+          _buildBarcode(context),
         ],
       ),
     );
   }
 
-  Widget _buildQRCode() {
+  Widget _buildQRCode(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppColors.background,
+          color: context.background,
           width: 2,
         ),
       ),
@@ -183,19 +184,19 @@ class CouponDisplay extends StatelessWidget {
         data: couponCode,
         version: QrVersions.auto,
         size: 200,
-        backgroundColor: AppColors.white,
+        backgroundColor: context.surface,
       ),
     );
   }
 
-  Widget _buildCouponCode() {
+  Widget _buildCouponCode(BuildContext context) {
     return Column(
       children: [
         Text(
-          'Código del cupón',
+          'CÃ³digo del cupÃ³n',
           style: GoogleFonts.poppins(
             fontSize: 14,
-            color: AppColors.textSecondary,
+            color: context.textSecondary,
           ),
         ),
         const SizedBox(height: 8),
@@ -205,7 +206,7 @@ class CouponDisplay extends StatelessWidget {
             vertical: 12,
           ),
           decoration: BoxDecoration(
-            color: AppColors.background,
+            color: context.background,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
@@ -213,7 +214,7 @@ class CouponDisplay extends StatelessWidget {
             style: GoogleFonts.robotoMono(
               fontSize: 20,
               fontWeight: FontWeight.w700,
-              color: AppColors.darkNavy,
+              color: context.darkNavy,
               letterSpacing: 2,
             ),
           ),
@@ -222,14 +223,14 @@ class CouponDisplay extends StatelessWidget {
     );
   }
 
-  Widget _buildBarcode() {
+  Widget _buildBarcode(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppColors.background,
+          color: context.background,
           width: 2,
         ),
       ),
@@ -243,45 +244,15 @@ class CouponDisplay extends StatelessWidget {
     );
   }
 
-  Widget _buildExpiryInfo() {
-    final expiryDate = DateTime.now().add(const Duration(days: 30));
-    final formattedDate =
-        '${expiryDate.day}/${expiryDate.month}/${expiryDate.year}';
 
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.background,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(
-            Icons.access_time,
-            size: 18,
-            color: AppColors.textSecondary,
-          ),
-          const SizedBox(width: 8),
-          Text(
-            'Válido hasta: $formattedDate',
-            style: GoogleFonts.poppins(
-              fontSize: 13,
-              color: AppColors.textSecondary,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
-  Widget _buildNewCouponButton() {
+  Widget _buildNewCouponButton(BuildContext context) {
     return OutlinedButton(
       onPressed: onGenerateNew,
       style: OutlinedButton.styleFrom(
-        foregroundColor: AppColors.primaryBlue,
-        side: const BorderSide(
-          color: AppColors.primaryBlue,
+        foregroundColor: context.primaryBlue,
+        side: BorderSide(
+          color: context.primaryBlue,
           width: 2,
         ),
         padding: const EdgeInsets.symmetric(vertical: 18),
@@ -290,7 +261,7 @@ class CouponDisplay extends StatelessWidget {
         ),
       ),
       child: Text(
-        'Generar nuevo cupón',
+        'Generar nuevo cupÃ³n',
         style: GoogleFonts.poppins(
           fontSize: 16,
           fontWeight: FontWeight.w600,

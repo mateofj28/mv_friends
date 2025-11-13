@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class ProfileTitle extends StatelessWidget {
   const ProfileTitle({super.key});
@@ -14,7 +14,7 @@ class ProfileTitle extends StatelessWidget {
         style: GoogleFonts.poppins(
           fontSize: 32,
           fontWeight: FontWeight.bold,
-          color: AppColors.primaryBlue,
+          color: context.primaryBlue,
         ),
       ),
     );

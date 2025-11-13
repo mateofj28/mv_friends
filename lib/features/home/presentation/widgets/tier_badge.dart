@@ -27,7 +27,7 @@ class TierBadge extends StatelessWidget {
         style: GoogleFonts.poppins(
           fontSize: 11,
           fontWeight: FontWeight.w600,
-          color: isActive ? AppColors.white : color,
+          color: isActive ? Colors.white : color,
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class NotificationsPage extends StatefulWidget {
   const NotificationsPage({super.key});
@@ -53,7 +53,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: Column(
           children: [
@@ -70,13 +70,13 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Widget _buildHeader(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      color: AppColors.white,
+      color: context.surface,
       child: Column(
         children: [
           Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.arrow_back, color: AppColors.primaryBlue),
+                icon: Icon(Icons.arrow_back, color: context.primaryBlue),
                 onPressed: () => Navigator.of(context).pop(),
               ),
               Expanded(
@@ -85,7 +85,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.primaryBlue,
+                    color: context.primaryBlue,
                   ),
                 ),
               ),
@@ -112,7 +112,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 ),
               ),
               style: TextButton.styleFrom(
-                foregroundColor: AppColors.primaryBlue,
+                foregroundColor: context.primaryBlue,
               ),
             ),
           ),
@@ -131,7 +131,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
             Icon(
               Iconsax.notification_bing,
               size: 80,
-              color: AppColors.textLight,
+              color: context.textLight,
             ),
             const SizedBox(height: 16),
             Text(
@@ -139,7 +139,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
               style: GoogleFonts.poppins(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: AppColors.textSecondary,
+                color: context.textSecondary,
               ),
             ),
           ],
@@ -174,10 +174,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isRead ? AppColors.white : AppColors.primaryBlue.withValues(alpha: 0.05),
+        color: isRead ? context.surface : context.primaryBlue.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isRead ? AppColors.background : AppColors.primaryBlue.withValues(alpha: 0.2),
+          color: isRead ? context.background : context.primaryBlue.withValues(alpha: 0.2),
           width: 1,
         ),
       ),
@@ -187,12 +187,12 @@ class _NotificationsPageState extends State<NotificationsPage> {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: AppColors.primaryBlue.withValues(alpha: 0.1),
+              color: context.primaryBlue.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(
               icon,
-              color: AppColors.primaryBlue,
+              color: context.primaryBlue,
               size: 24,
             ),
           ),
@@ -209,7 +209,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                         style: GoogleFonts.poppins(
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.darkNavy,
+                          color: context.darkNavy,
                         ),
                       ),
                     ),
@@ -217,8 +217,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       Container(
                         width: 8,
                         height: 8,
-                        decoration: const BoxDecoration(
-                          color: AppColors.primaryBlue,
+                        decoration: BoxDecoration(
+                          color: context.primaryBlue,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -229,7 +229,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   message,
                   style: GoogleFonts.poppins(
                     fontSize: 14,
-                    color: AppColors.textSecondary,
+                    color: context.textSecondary,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -237,7 +237,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   time,
                   style: GoogleFonts.poppins(
                     fontSize: 12,
-                    color: AppColors.textLight,
+                    color: context.textLight,
                   ),
                 ),
               ],

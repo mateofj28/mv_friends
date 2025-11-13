@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class RedeemButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -22,10 +22,10 @@ class RedeemButton extends StatelessWidget {
             child: ElevatedButton(
               onPressed: onPressed,
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.orange,
-                foregroundColor: AppColors.white,
+                backgroundColor: context.orange,
+                foregroundColor: context.surface,
                 elevation: 4,
-                shadowColor: AppColors.orange.withValues(alpha: 0.4),
+                shadowColor: context.orange.withValues(alpha: 0.4),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),

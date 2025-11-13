@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class ReferralDropdown extends StatelessWidget {
   final String? value;
@@ -22,10 +22,10 @@ class ReferralDropdown extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: context.surface,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppColors.background,
+          color: context.background,
           width: 1,
         ),
       ),
@@ -38,15 +38,11 @@ class ReferralDropdown extends StatelessWidget {
               hint,
               style: GoogleFonts.poppins(
                 fontSize: 16,
-                color: AppColors.textLight,
+                color: context.textLight,
               ),
             ),
           ),
-          icon: const Padding(
-            padding: EdgeInsets.only(right: 20),
-            child: Icon(
-              Iconsax.arrow_down_1,
-              color: AppColors.textSecondary,
+          icon: Padding(padding: const EdgeInsets.only(right: 20), child: Icon(Iconsax.arrow_down_1, color: context.textSecondary,
             ),
           ),
           isExpanded: true,
@@ -59,7 +55,7 @@ class ReferralDropdown extends StatelessWidget {
                   item,
                   style: GoogleFonts.poppins(
                     fontSize: 16,
-                    color: AppColors.darkNavy,
+                    color: context.darkNavy,
                   ),
                 ),
               ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../../domain/models/referral_detail.dart';
 import '../widgets/referral_detail_header.dart';
 import '../widgets/referral_user_header.dart';
@@ -16,7 +16,7 @@ class ReferralDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: Column(
           children: [

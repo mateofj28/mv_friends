@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../../data/rewards_data.dart';
 import '../widgets/reward_item_card.dart';
 
@@ -17,19 +17,19 @@ class CityRewardsPage extends StatelessWidget {
     final rewards = RewardsData.getRewardsByCity(cityName);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: Column(
           children: [
             // Header
             Container(
               padding: const EdgeInsets.all(20),
-              color: AppColors.white,
+              color: context.surface,
               child: Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.arrow_back,
-                        color: AppColors.primaryBlue),
+                    icon: Icon(Icons.arrow_back,
+                        color: context.primaryBlue),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   const SizedBox(width: 8),
@@ -38,7 +38,7 @@ class CityRewardsPage extends StatelessWidget {
                     style: GoogleFonts.poppins(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primaryBlue,
+                      color: context.primaryBlue,
                     ),
                   ),
                 ],

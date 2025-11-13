@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class ProfileMenuItem extends StatelessWidget {
   final IconData icon;
@@ -31,7 +31,7 @@ class ProfileMenuItem extends StatelessWidget {
                 children: [
                   Icon(
                     icon,
-                    color: AppColors.primaryBlue,
+                    color: context.primaryBlue,
                     size: 24,
                   ),
                   const SizedBox(width: 16),
@@ -41,13 +41,13 @@ class ProfileMenuItem extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        color: AppColors.primaryBlue,
+                        color: context.primaryBlue,
                       ),
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     Iconsax.arrow_right_3,
-                    color: AppColors.textSecondary,
+                    color: context.textSecondary,
                     size: 18,
                   ),
                 ],
@@ -56,11 +56,11 @@ class ProfileMenuItem extends StatelessWidget {
           ),
         ),
         if (showDivider)
-          const Padding(
-            padding: EdgeInsets.only(left: 60),
+          Padding(
+            padding: const EdgeInsets.only(left: 60),
             child: Divider(
               height: 1,
-              color: AppColors.background,
+              color: context.background,
               thickness: 1,
             ),
           ),

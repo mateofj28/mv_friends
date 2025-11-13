@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../../../../core/utils/navigation_helper.dart';
 import '../../../referral_detail/domain/models/referral_detail.dart';
 import '../../../referral_detail/presentation/pages/referral_detail_page.dart';
@@ -67,7 +67,7 @@ class ReferralStatusCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 16),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: context.surface,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
@@ -85,12 +85,12 @@ class ReferralStatusCard extends StatelessWidget {
             height: 60,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.background,
+              color: context.background,
             ),
-            child: const Icon(
+            child: Icon(
               Icons.person,
               size: 32,
-              color: AppColors.textSecondary,
+              color: context.textSecondary,
             ),
           ),
           const SizedBox(width: 16),
@@ -104,7 +104,7 @@ class ReferralStatusCard extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.darkNavy,
+                    color: context.darkNavy,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -113,7 +113,7 @@ class ReferralStatusCard extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w400,
-                    color: AppColors.textSecondary,
+                    color: context.textSecondary,
                     height: 1.3,
                   ),
                   maxLines: 2,
@@ -137,7 +137,7 @@ class ReferralStatusCard extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.textSecondary,
+                          color: context.textSecondary,
                         ),
                       ),
                     ),
@@ -149,7 +149,7 @@ class ReferralStatusCard extends StatelessWidget {
                   child: LinearProgressIndicator(
                     value: progress,
                     minHeight: 8,
-                    backgroundColor: AppColors.background,
+                    backgroundColor: context.background,
                     valueColor: AlwaysStoppedAnimation<Color>(statusColor),
                   ),
                 ),

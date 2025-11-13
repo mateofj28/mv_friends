@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../../../../core/utils/navigation_helper.dart';
 import '../widgets/rewards_header.dart';
 import '../widgets/wallet_balance.dart';
@@ -14,7 +14,7 @@ class RewardsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: Column(
           children: [

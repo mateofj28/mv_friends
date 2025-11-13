@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../../../../core/auth/data/datasources/user_storage.dart';
 import '../../../../core/di/injection.dart';
 import '../../../home/presentation/widgets/tier_badge.dart';
@@ -45,17 +46,17 @@ class _ProfileHeaderState extends State<ProfileHeader> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: AppColors.primaryBlue,
+                color: context.primaryBlue,
                 width: 4,
               ),
             ),
             child: ClipOval(
               child: Container(
-                color: AppColors.background,
-                child: const Icon(
+                color: context.background,
+                child: Icon(
                   Iconsax.user,
                   size: 60,
-                  color: AppColors.primaryBlue,
+                  color: context.primaryBlue,
                 ),
               ),
             ),
@@ -66,7 +67,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
             style: GoogleFonts.poppins(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: AppColors.primaryBlue,
+              color: context.primaryBlue,
             ),
           ),
           const SizedBox(height: 12),
@@ -98,7 +99,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                     child: Container(
                       height: 12,
                       decoration: BoxDecoration(
-                        color: AppColors.primaryBlue,
+                        color: context.primaryBlue,
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -114,7 +115,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                     style: GoogleFonts.poppins(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primaryBlue,
+                      color: context.primaryBlue,
                     ),
                   ),
                   Text(
@@ -122,7 +123,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                     style: GoogleFonts.poppins(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.textSecondary,
+                      color: context.textSecondary,
                     ),
                   ),
                 ],

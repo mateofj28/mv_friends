@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class MenuCard extends StatelessWidget {
   final IconData icon;
@@ -24,7 +24,7 @@ class MenuCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        color: const Color(0xFFABDBF7),
+        color: context.cardBlue,
         borderRadius: BorderRadius.circular(20),        
       ),
       child: Material(
@@ -39,7 +39,7 @@ class MenuCard extends StatelessWidget {
                 // Icon
                 Icon(
                   icon,
-                  color: AppColors.orange,
+                  color: context.orange,
                   size: 42,
                 ),
                 const SizedBox(width: 16),
@@ -53,7 +53,7 @@ class MenuCard extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFF0A1834),
+                          color: context.darkNavy,
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -62,16 +62,16 @@ class MenuCard extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: const Color(0xFF376185),
+                          color: context.textSecondary,
                         ),
                       ),
                     ],
                   ),
                 ),
                 // Arrow
-                const Icon(
+                Icon(
                   Iconsax.arrow_right_3,
-                  color: Color(0xFF0A1834),
+                  color: context.darkNavy,
                   size: 20,
                 ),
               ],

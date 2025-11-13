@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class SubmitButton extends StatelessWidget {
   final String text;
@@ -20,10 +20,10 @@ class SubmitButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryBlue,
-          foregroundColor: AppColors.white,
+          backgroundColor: context.primaryBlue,
+          foregroundColor: context.surface,
           elevation: 4,
-          shadowColor: AppColors.primaryBlue.withValues(alpha: 0.4),
+          shadowColor: context.primaryBlue.withValues(alpha: 0.4),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),

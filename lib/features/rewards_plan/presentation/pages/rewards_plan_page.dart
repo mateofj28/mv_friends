@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../../../../core/utils/navigation_helper.dart';
 import 'city_rewards_page.dart';
 
@@ -35,19 +35,19 @@ class _RewardsPlanPageState extends State<RewardsPlanPage> {
     ];
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: Column(
           children: [
             // Header
             Container(
               padding: const EdgeInsets.all(20),
-              color: AppColors.white,
+              color: context.surface,
               child: Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.arrow_back,
-                        color: AppColors.primaryBlue),
+                    icon: Icon(Icons.arrow_back,
+                        color: context.primaryBlue),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   const SizedBox(width: 8),
@@ -56,7 +56,7 @@ class _RewardsPlanPageState extends State<RewardsPlanPage> {
                     style: GoogleFonts.poppins(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primaryBlue,
+                      color: context.primaryBlue,
                     ),
                   ),
                 ],
@@ -86,7 +86,7 @@ class _RewardsPlanPageState extends State<RewardsPlanPage> {
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.15),
+                                color: Colors.black.withValues(alpha: 0.15),
                                 blurRadius: 8,
                                 offset: const Offset(0, 4),
                               ),
@@ -107,7 +107,7 @@ class _RewardsPlanPageState extends State<RewardsPlanPage> {
                                 Positioned.fill(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.black.withOpacity(0.35),
+                                      color: Colors.black.withValues(alpha: 0.35),
                                     ),
                                   ),
                                 ),
@@ -160,10 +160,10 @@ class _RewardsPlanPageState extends State<RewardsPlanPage> {
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: context.surface,
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
-                                color: Colors.grey[400]!,
+                                color: context.background,
                                 width: 2,
                               ),
                             ),
@@ -174,14 +174,14 @@ class _RewardsPlanPageState extends State<RewardsPlanPage> {
                                   Icon(
                                     Icons.image_outlined,
                                     size: 48,
-                                    color: Colors.grey[600],
+                                    color: context.textLight,
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     'Publicidad ${index + 1}',
                                     style: GoogleFonts.poppins(
                                       fontSize: 16,
-                                      color: Colors.grey[600],
+                                      color: context.textSecondary,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -205,8 +205,8 @@ class _RewardsPlanPageState extends State<RewardsPlanPage> {
                         height: 8,
                         decoration: BoxDecoration(
                           color: _currentPage == index
-                              ? AppColors.primaryBlue
-                              : Colors.grey[400],
+                              ? context.primaryBlue
+                              : context.textLight,
                           borderRadius: BorderRadius.circular(4),
                         ),
                       ),

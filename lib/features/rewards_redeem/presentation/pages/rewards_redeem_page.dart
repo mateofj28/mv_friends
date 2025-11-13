@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../../../coupon_generation/presentation/pages/coupon_generation_page.dart';
 
 class RewardsRedeemPage extends StatefulWidget {
@@ -27,11 +27,11 @@ class _RewardsRedeemPageState extends State<RewardsRedeemPage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            'Filtrar por categoría',
+            'Filtrar por categorÃ­a',
             style: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: AppColors.primaryBlue,
+              color: context.primaryBlue,
             ),
           ),
           content: Column(
@@ -62,11 +62,11 @@ class _RewardsRedeemPageState extends State<RewardsRedeemPage> {
         style: GoogleFonts.poppins(
           fontSize: 16,
           fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-          color: isSelected ? AppColors.primaryBlue : AppColors.darkNavy,
+          color: isSelected ? context.primaryBlue : context.darkNavy,
         ),
       ),
       trailing: isSelected
-          ? const Icon(Icons.check, color: AppColors.primaryBlue)
+          ? Icon(Icons.check, color: context.primaryBlue)
           : null,
       onTap: () {
         setState(() {
@@ -80,7 +80,7 @@ class _RewardsRedeemPageState extends State<RewardsRedeemPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: Column(
           children: [
@@ -101,11 +101,11 @@ class _RewardsRedeemPageState extends State<RewardsRedeemPage> {
   Widget _buildHeader(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      color: AppColors.white,
+      color: context.surface,
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(Icons.arrow_back, color: AppColors.primaryBlue),
+            icon: Icon(Icons.arrow_back, color: context.primaryBlue),
             onPressed: () => Navigator.of(context).pop(),
           ),
           Expanded(
@@ -114,7 +114,7 @@ class _RewardsRedeemPageState extends State<RewardsRedeemPage> {
               style: GoogleFonts.poppins(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
-                color: AppColors.primaryBlue,
+                color: context.primaryBlue,
               ),
             ),
           ),
@@ -139,26 +139,26 @@ class _RewardsRedeemPageState extends State<RewardsRedeemPage> {
         },
         style: GoogleFonts.poppins(
           fontSize: 16,
-          color: AppColors.darkNavy,
+          color: context.darkNavy,
         ),
         decoration: InputDecoration(
           hintText: 'Buscar marca...',
           hintStyle: GoogleFonts.poppins(
             fontSize: 16,
-            color: AppColors.textLight,
+            color: context.textLight,
           ),
           prefixIcon: IconButton(
             icon: Icon(
               Icons.filter_list,
               color: _selectedCategory != null
-                  ? AppColors.primaryBlue
-                  : AppColors.textLight,
+                  ? context.primaryBlue
+                  : context.textLight,
             ),
             onPressed: _showFilterDialog,
           ),
           suffixIcon: _searchQuery.isNotEmpty
               ? IconButton(
-                  icon: const Icon(Icons.clear, color: AppColors.textLight),
+                  icon: Icon(Icons.clear, color: context.textLight),
                   onPressed: () {
                     _searchController.clear();
                     setState(() {
@@ -166,23 +166,23 @@ class _RewardsRedeemPageState extends State<RewardsRedeemPage> {
                     });
                   },
                 )
-              : const Icon(
+              : Icon(
                   Icons.search,
-                  color: AppColors.primaryBlue,
+                  color: context.primaryBlue,
                 ),
           filled: true,
-          fillColor: AppColors.white,
+          fillColor: context.surface,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
-              color: AppColors.background,
+              color: context.background,
               width: 1,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(
-              color: AppColors.primaryBlue,
+            borderSide: BorderSide(
+              color: context.primaryBlue,
               width: 2,
             ),
           ),
@@ -244,7 +244,7 @@ class _RewardsRedeemPageState extends State<RewardsRedeemPage> {
             'No se encontraron marcas',
             style: GoogleFonts.poppins(
               fontSize: 16,
-              color: AppColors.textSecondary,
+              color: context.textSecondary,
             ),
           ),
         ),

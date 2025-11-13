@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../../../notifications/presentation/pages/notifications_page.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -10,7 +10,7 @@ class HomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      color: AppColors.white,
+      color: context.surface,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -30,12 +30,12 @@ class HomeHeader extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: AppColors.background,
+                color: context.background,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Icon(
+              child: Icon(
                 Iconsax.notification,
-                color: AppColors.primaryBlue,
+                color: context.primaryBlue,
                 size: 24,
               ),
             ),

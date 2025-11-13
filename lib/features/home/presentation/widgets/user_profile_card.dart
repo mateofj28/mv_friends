@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../../../../core/auth/data/datasources/user_storage.dart';
 import '../../../../core/di/injection.dart';
 import 'tier_badge.dart';
@@ -38,7 +39,7 @@ class _UserProfileCardState extends State<UserProfileCard> {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -56,16 +57,16 @@ class _UserProfileCardState extends State<UserProfileCard> {
             height: 64,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.background,
+              color: context.background,
               border: Border.all(
-                color: AppColors.primaryBlue.withValues(alpha: 0.2),
+                color: context.primaryBlue.withValues(alpha: 0.2),
                 width: 2,
               ),
             ),
-            child: const Icon(
+            child: Icon(
               Iconsax.user,
               size: 32,
-              color: AppColors.primaryBlue,
+              color: context.primaryBlue,
             ),
           ),
           const SizedBox(width: 16),
@@ -79,7 +80,7 @@ class _UserProfileCardState extends State<UserProfileCard> {
                   style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.darkNavy,
+                    color: context.darkNavy,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -92,9 +93,9 @@ class _UserProfileCardState extends State<UserProfileCard> {
             ),
           ),
           // Arrow
-          const Icon(
+          Icon(
             Iconsax.arrow_right_3,
-            color: AppColors.textSecondary,
+            color: context.textSecondary,
             size: 20,
           ),
         ],

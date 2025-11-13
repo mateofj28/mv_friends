@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class WalletBalance extends StatelessWidget {
   final String amount;
@@ -24,11 +24,11 @@ class WalletBalance extends StatelessWidget {
             width: 120,
             height: 120,
             decoration: BoxDecoration(
-              color: AppColors.white,
+              color: context.surface,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primaryBlue.withValues(alpha: 0.1),
+                  color: context.primaryBlue.withValues(alpha: 0.1),
                   blurRadius: 20,
                   offset: const Offset(0, 4),
                 ),
@@ -40,7 +40,7 @@ class WalletBalance extends StatelessWidget {
                 Icon(
                   Iconsax.wallet_2,
                   size: 80,
-                  color: AppColors.primaryBlue,
+                  color: context.primaryBlue,
                 ),
                 Positioned(
                   right: 20,
@@ -48,8 +48,8 @@ class WalletBalance extends StatelessWidget {
                   child: Container(
                     width: 12,
                     height: 12,
-                    decoration: const BoxDecoration(
-                      color: AppColors.primaryBlue,
+                    decoration: BoxDecoration(
+                      color: context.primaryBlue,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -64,7 +64,7 @@ class WalletBalance extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 32,
               fontWeight: FontWeight.bold,
-              color: AppColors.primaryBlue,
+              color: context.primaryBlue,
             ),
           ),
           Text(
@@ -72,7 +72,7 @@ class WalletBalance extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.w400,
-              color: AppColors.textSecondary,
+              color: context.textSecondary,
             ),
           ),
         ],

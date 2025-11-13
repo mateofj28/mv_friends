@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class TransactionHistory extends StatelessWidget {
   const TransactionHistory({super.key});
@@ -12,7 +12,7 @@ class TransactionHistory extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -30,7 +30,7 @@ class TransactionHistory extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: AppColors.darkNavy,
+              color: context.darkNavy,
             ),
           ),
           const SizedBox(height: 16),
@@ -78,9 +78,7 @@ class _TransactionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(
-          Iconsax.tick_circle5,
-          color: AppColors.primaryBlue,
+        Icon(Iconsax.tick_circle5, color: context.primaryBlue,
           size: 20,
         ),
         const SizedBox(width: 12),
@@ -92,7 +90,7 @@ class _TransactionItem extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.darkNavy,
+                  color: context.darkNavy,
                 ),
               ),
               TextSpan(
@@ -100,7 +98,7 @@ class _TransactionItem extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  color: AppColors.primaryBlue,
+                  color: context.primaryBlue,
                 ),
               ),
               TextSpan(
@@ -108,7 +106,7 @@ class _TransactionItem extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  color: AppColors.primaryBlue,
+                  color: context.primaryBlue,
                 ),
               ),
             ],

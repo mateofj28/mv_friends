@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../widgets/referral_status_header.dart';
 import '../widgets/referral_status_card.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -104,7 +104,7 @@ class _ReferralStatusPageState extends State<ReferralStatusPage> {
     ];
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: Column(
           children: [
@@ -120,6 +120,7 @@ class _ReferralStatusPageState extends State<ReferralStatusPage> {
                       child: Row(
                         children: [
                           _buildFilterChip(
+                            context,
                             label: 'Todos',
                             isSelected: _selectedFilter == null,
                             onTap: () {
@@ -132,6 +133,7 @@ class _ReferralStatusPageState extends State<ReferralStatusPage> {
                             return Padding(
                               padding: const EdgeInsets.only(left: 12),
                               child: _buildFilterChip(
+                                context,
                                 label: filter,
                                 isSelected: _selectedFilter == filter,
                                 onTap: () {
@@ -156,14 +158,14 @@ class _ReferralStatusPageState extends State<ReferralStatusPage> {
                             Icon(
                               Iconsax.search_normal,
                               size: 64,
-                              color: AppColors.textSecondary.withValues(alpha: 0.5),
+                              color: context.textSecondary.withValues(alpha: 0.5),
                             ),
                             const SizedBox(height: 16),
                             Text(
                               'No hay referidos con este estado',
                               style: GoogleFonts.poppins(
                                 fontSize: 16,
-                                color: AppColors.textSecondary,
+                                color: context.textSecondary,
                               ),
                             ),
                           ],
@@ -201,7 +203,8 @@ class _ReferralStatusPageState extends State<ReferralStatusPage> {
 
 
 
-  Widget _buildFilterChip({
+  Widget _buildFilterChip(
+    BuildContext context, {
     required String label,
     required bool isSelected,
     required VoidCallback onTap,
@@ -212,10 +215,10 @@ class _ReferralStatusPageState extends State<ReferralStatusPage> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primaryBlue : AppColors.white,
+          color: isSelected ? context.primaryBlue : context.surface,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: isSelected ? AppColors.primaryBlue : AppColors.background,
+            color: isSelected ? context.primaryBlue : context.background,
             width: 1,
           ),
         ),
@@ -224,7 +227,7 @@ class _ReferralStatusPageState extends State<ReferralStatusPage> {
           style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: isSelected ? AppColors.white : AppColors.textSecondary,
+            color: isSelected ? context.textWhite : context.textSecondary,
           ),
         ),
       ),

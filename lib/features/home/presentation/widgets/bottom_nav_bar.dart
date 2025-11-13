@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -17,7 +17,7 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.darkNavy,
+        color: context.darkNavy,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(24),
           topRight: Radius.circular(24),
@@ -80,7 +80,7 @@ class _NavItem extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: isActive ? AppColors.orange : AppColors.textLight,
+              color: isActive ? context.orange : context.textLight,
               size: 24,
             ),
             const SizedBox(height: 4),
@@ -89,7 +89,7 @@ class _NavItem extends StatelessWidget {
               style: GoogleFonts.poppins(
                 fontSize: 10,
                 fontWeight: FontWeight.w500,
-                color: isActive ? AppColors.orange : AppColors.textLight,
+                color: isActive ? context.orange : context.textLight,
               ),
             ),
           ],

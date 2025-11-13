@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class ProfileStatsCard extends StatelessWidget {
   const ProfileStatsCard({super.key});
@@ -16,11 +16,11 @@ class ProfileStatsCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Estadísticas de usuario',
+                'EstadÃ­sticas de usuario',
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.darkNavy,
+                  color: context.darkNavy,
                 ),
               ),
             ],
@@ -63,10 +63,10 @@ class _StatCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.background,
+        color: context.background,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppColors.primaryBlue.withValues(alpha: 0.1),
+          color: context.primaryBlue.withValues(alpha: 0.1),
           width: 1,
         ),
       ),
@@ -78,7 +78,7 @@ class _StatCard extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 11,
               fontWeight: FontWeight.w500,
-              color: AppColors.primaryBlue,
+              color: context.primaryBlue,
               height: 1.3,
             ),
           ),
@@ -88,7 +88,7 @@ class _StatCard extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: AppColors.primaryBlue,
+              color: context.primaryBlue,
             ),
           ),
         ],

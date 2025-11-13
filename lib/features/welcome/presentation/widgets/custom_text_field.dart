@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -40,7 +40,7 @@ class CustomTextField extends StatelessWidget {
           keyboardType: keyboardType,
           inputFormatters: inputFormatters,
           style: GoogleFonts.poppins(
-            color: AppColors.white,
+            color: context.textWhite,
             fontSize: 16,
           ),
           decoration: InputDecoration(
@@ -48,12 +48,12 @@ class CustomTextField extends StatelessWidget {
             prefixIcon: icon != null
                 ? Icon(
                     icon,
-                    color: AppColors.white.withValues(alpha: 0.7),
+                    color: context.textWhite.withValues(alpha: 0.7),
                     size: 24,
                   )
                 : null,
             filled: true,
-            fillColor: AppColors.buttonSecondary,
+            fillColor: context.buttonSecondary,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide: BorderSide.none,
@@ -63,7 +63,7 @@ class CustomTextField extends StatelessWidget {
               vertical: 20,
             ),
             hintStyle: GoogleFonts.poppins(
-              color: AppColors.white.withValues(alpha: 0.7),
+              color: context.textWhite.withValues(alpha: 0.7),
               fontSize: 16,
               fontWeight: FontWeight.w400,
             ),

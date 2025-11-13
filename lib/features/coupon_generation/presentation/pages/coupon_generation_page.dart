@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_extensions.dart';
 import '../../../../core/utils/currency_input_formatter.dart';
 import '../widgets/coupon_display.dart';
 
@@ -38,15 +39,15 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
 
     final amount = int.tryParse(value.replaceAll('.', '').replaceAll(',', ''));
     if (amount == null) {
-      return 'Ingresa un valor numérico válido';
+      return 'Ingresa un valor numÃ©rico vÃ¡lido';
     }
 
     if (amount < 2000) {
-      return 'El monto mínimo es \$2.000';
+      return 'El monto mÃ­nimo es \$2.000';
     }
 
     if (amount > 3000000) {
-      return 'El monto máximo es \$3.000.000';
+      return 'El monto mÃ¡ximo es \$3.000.000';
     }
 
     return null;
@@ -66,7 +67,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
       // Simular llamada a API
       await Future.delayed(const Duration(seconds: 2));
 
-      // Generar código de cupón aleatorio
+      // Generar cÃ³digo de cupÃ³n aleatorio
       final timestamp = DateTime.now().millisecondsSinceEpoch;
       final couponCode = 'CPN${timestamp.toString().substring(7)}';
 
@@ -78,7 +79,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
     } catch (e) {
       setState(() {
         _isLoading = false;
-        _errorMessage = 'Error al generar el cupón. Intenta nuevamente.';
+        _errorMessage = 'Error al generar el cupÃ³n. Intenta nuevamente.';
       });
     }
   }
@@ -95,7 +96,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: Column(
           children: [
@@ -119,20 +120,20 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
   Widget _buildHeader(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      color: AppColors.white,
+      color: context.surface,
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(Icons.arrow_back, color: AppColors.primaryBlue),
+            icon: Icon(Icons.arrow_back, color: context.primaryBlue),
             onPressed: () => Navigator.of(context).pop(),
           ),
           Expanded(
             child: Text(
-              'Generar Cupón',
+              'Generar CupÃ³n',
               style: GoogleFonts.poppins(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
-                color: AppColors.primaryBlue,
+                color: context.primaryBlue,
               ),
             ),
           ),
@@ -172,7 +173,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -189,7 +190,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
             width: 80,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: AppColors.background,
+              color: context.background,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Image.asset(
@@ -203,7 +204,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
             style: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: AppColors.darkNavy,
+              color: context.darkNavy,
             ),
           ),
         ],
@@ -216,11 +217,11 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Monto del cupón',
+          'Monto del cupÃ³n',
           style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: AppColors.darkNavy,
+            color: context.darkNavy,
           ),
         ),
         const SizedBox(height: 12),
@@ -235,38 +236,38 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: AppColors.darkNavy,
+            color: context.darkNavy,
           ),
           decoration: InputDecoration(
             hintText: '0',
             hintStyle: GoogleFonts.poppins(
               fontSize: 18,
-              color: AppColors.textLight,
+              color: context.textLight,
             ),
             prefixText: '\$ ',
             prefixStyle: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: AppColors.darkNavy,
+              color: context.darkNavy,
             ),
             helperText: 'Monto entre \$2.000 y \$3.000.000',
             helperStyle: GoogleFonts.poppins(
               fontSize: 13,
-              color: AppColors.textSecondary,
+              color: context.textSecondary,
             ),
             filled: true,
-            fillColor: AppColors.white,
+            fillColor: context.surface,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: AppColors.background,
+                color: context.background,
                 width: 2,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(
-                color: AppColors.primaryBlue,
+              borderSide: BorderSide(
+                color: context.primaryBlue,
                 width: 2,
               ),
             ),
@@ -331,14 +332,14 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
     return ElevatedButton(
       onPressed: _isLoading ? null : _generateCoupon,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryBlue,
+        backgroundColor: context.primaryBlue,
         foregroundColor: AppColors.white,
         padding: const EdgeInsets.symmetric(vertical: 18),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
         elevation: 0,
-        disabledBackgroundColor: AppColors.textLight,
+        disabledBackgroundColor: context.textLight,
       ),
       child: _isLoading
           ? const SizedBox(
@@ -350,7 +351,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
               ),
             )
           : Text(
-              'Obtener cupón',
+              'Obtener cupÃ³n',
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
