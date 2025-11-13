@@ -1,20 +1,20 @@
 # Arquitectura del Sistema de Temas
 
-## 🎯 Mejores Prácticas Implementadas
+## Mejores Practicas Implementadas
 
 ### 1. Extension Methods (Limpio y Conciso)
 
 En lugar de:
 ```dart
-color: ThemeHelper.primaryBlue(context)  // ❌ Verboso
+color: ThemeHelper.primaryBlue(context)  // Verboso
 ```
 
 Ahora usamos:
 ```dart
-color: context.primaryBlue  // ✅ Limpio y elegante
+color: context.primaryBlue  // Limpio y elegante
 ```
 
-### 2. ColorScheme de Flutter (Estándar)
+### 2. ColorScheme de Flutter (Estandar)
 
 Integramos nuestros colores con el sistema de temas de Flutter:
 
@@ -28,21 +28,21 @@ color: colors.surface
 color: colors.onSurface
 ```
 
-## 📁 Estructura de Archivos
+## Estructura de Archivos
 
 ```
 lib/core/theme/
 ├── app_colors.dart              # Colores modo claro
 ├── app_colors_dark.dart         # Colores modo oscuro
 ├── app_theme.dart               # Definición de ThemeData con ColorScheme
-├── theme_extensions.dart        # ⭐ Extensions para acceso limpio
+├── theme_extensions.dart        # Extensions para acceso limpio
 ├── theme_provider.dart          # State management del tema
-└── theme_helper.dart            # ⚠️ DEPRECATED - Usar extensions
+└── theme_helper.dart            # DEPRECATED - Usar extensions
 ```
 
-## 🔧 Uso de Extensions
+## Uso de Extensions
 
-### Colores Básicos
+### Colores Basicos
 
 ```dart
 // Colores principales
@@ -96,7 +96,7 @@ Text(
 )
 ```
 
-## 🎨 ColorScheme Mapping
+## ColorScheme Mapping
 
 Nuestros colores están mapeados al ColorScheme de Flutter:
 
@@ -109,7 +109,7 @@ Nuestros colores están mapeados al ColorScheme de Flutter:
 | darkNavy | onSurface | Texto sobre superficies |
 | textSecondary | onSurfaceVariant | Texto secundario |
 
-## 🔄 Migración de Código Existente
+## Migracion de Codigo Existente
 
 ### Antes (ThemeHelper)
 ```dart
@@ -126,7 +126,7 @@ Container(
 )
 ```
 
-### Después (Extensions)
+### Despues (Extensions)
 ```dart
 import '../../../../core/theme/theme_extensions.dart';
 
@@ -141,32 +141,32 @@ Container(
 )
 ```
 
-## ✅ Ventajas de Esta Arquitectura
+## Ventajas de Esta Arquitectura
 
-1. **Código más limpio**: `context.primaryBlue` vs `ThemeHelper.primaryBlue(context)`
+1. **Codigo mas limpio**: `context.primaryBlue` vs `ThemeHelper.primaryBlue(context)`
 2. **Menos imports**: Solo un import de extensions
 3. **Type-safe**: Errores en compile-time, no runtime
-4. **Estándar de Flutter**: Usa ColorScheme nativo
-5. **Fácil de extender**: Agregar nuevos colores es simple
+4. **Estandar de Flutter**: Usa ColorScheme nativo
+5. **Facil de extender**: Agregar nuevos colores es simple
 6. **Mejor autocompletado**: El IDE sugiere todos los colores disponibles
 
-## 🚀 Próximos Pasos
+## Proximos Pasos
 
-1. ✅ Extensions creadas
-2. ✅ ColorScheme configurado
-3. ✅ Archivos principales migrados (10/50)
-4. ⏳ Migrar archivos restantes (40/50)
-5. ⏳ Deprecar theme_helper.dart
-6. ⏳ Agregar tests para temas
+1. Extensions creadas
+2. ColorScheme configurado
+3. Archivos principales migrados (10/50)
+4. Migrar archivos restantes (40/50)
+5. Deprecar theme_helper.dart
+6. Agregar tests para temas
 
-## 📝 Convenciones
+## Convenciones
 
 - Usar `context.surface` en lugar de `context.white` para superficies
 - Usar `context.background` para fondos de pantalla
 - Usar `context.colors.primary` cuando necesites el color del ColorScheme
 - Los colores de acento (gold, silver, etc.) no cambian con el tema
 
-## 🎓 Recursos
+## Recursos
 
 - [Material Design 3 Color System](https://m3.material.io/styles/color/the-color-system/key-colors-tones)
 - [Flutter ColorScheme](https://api.flutter.dev/flutter/material/ColorScheme-class.html)

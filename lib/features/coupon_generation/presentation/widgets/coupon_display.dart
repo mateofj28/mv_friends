@@ -67,7 +67,7 @@ class CouponDisplay extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Â¡CupÃ³n generado!',
+                  'Cupon generado!',
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -76,7 +76,7 @@ class CouponDisplay extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Tu cupÃ³n estÃ¡ listo para usar',
+                  'Tu cupon esta listo para usar',
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     color: Colors.green.shade700,
@@ -193,7 +193,7 @@ class CouponDisplay extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'CÃ³digo del cupÃ³n',
+          'Codigo del cupon',
           style: GoogleFonts.poppins(
             fontSize: 14,
             color: context.textSecondary,
@@ -261,7 +261,7 @@ class CouponDisplay extends StatelessWidget {
         ),
       ),
       child: Text(
-        'Generar nuevo cupÃ³n',
+        'Generar nuevo cupon',
         style: GoogleFonts.poppins(
           fontSize: 16,
           fontWeight: FontWeight.w600,

@@ -27,7 +27,7 @@ class _RewardsRedeemPageState extends State<RewardsRedeemPage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            'Filtrar por categorÃ­a',
+            'Filtrar por categoria',
             style: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.w600,

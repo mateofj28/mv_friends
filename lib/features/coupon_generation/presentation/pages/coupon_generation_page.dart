@@ -39,15 +39,15 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
 
     final amount = int.tryParse(value.replaceAll('.', '').replaceAll(',', ''));
     if (amount == null) {
-      return 'Ingresa un valor numÃ©rico vÃ¡lido';
+      return 'Ingresa un valor numerico valido';
     }
 
     if (amount < 2000) {
-      return 'El monto mÃ­nimo es \$2.000';
+      return 'El monto minimo es \$2.000';
     }
 
     if (amount > 3000000) {
-      return 'El monto mÃ¡ximo es \$3.000.000';
+      return 'El monto maximo es \$3.000.000';
     }
 
     return null;
@@ -67,7 +67,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
       // Simular llamada a API
       await Future.delayed(const Duration(seconds: 2));
 
-      // Generar cÃ³digo de cupÃ³n aleatorio
+      // Generar codigo de cupon aleatorio
       final timestamp = DateTime.now().millisecondsSinceEpoch;
       final couponCode = 'CPN${timestamp.toString().substring(7)}';
 
@@ -79,7 +79,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
     } catch (e) {
       setState(() {
         _isLoading = false;
-        _errorMessage = 'Error al generar el cupÃ³n. Intenta nuevamente.';
+        _errorMessage = 'Error al generar el cupon. Intenta nuevamente.';
       });
     }
   }
@@ -129,7 +129,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
           ),
           Expanded(
             child: Text(
-              'Generar CupÃ³n',
+              'Generar Cupon',
               style: GoogleFonts.poppins(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
@@ -217,7 +217,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Monto del cupÃ³n',
+          'Monto del cupon',
           style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w600,
@@ -351,7 +351,7 @@ class _CouponGenerationPageState extends State<CouponGenerationPage> {
               ),
             )
           : Text(
-              'Obtener cupÃ³n',
+              'Obtener cupon',
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,

@@ -54,5 +54,5 @@ extension ColorSchemeExtensions on ColorScheme {
   Color get cardSurface => surface;
   
   /// Color de fondo
-  Color get appBackground => background;
+  Color get appBackground => surface;
 }

@@ -6,12 +6,16 @@ class ReferralQuestion extends StatelessWidget {
   final String question;
   final bool value;
   final Function(bool) onChanged;
+  final String? yesText;
+  final String? noText;
 
   const ReferralQuestion({
     super.key,
     required this.question,
     required this.value,
     required this.onChanged,
+    this.yesText,
+    this.noText,
   });
 
   @override
@@ -31,13 +35,13 @@ class ReferralQuestion extends StatelessWidget {
         Row(
           children: [
             _RadioOption(
-              label: 'SÃƒÆ’Ã‚Â­',
+              label: yesText ?? 'Si',
               isSelected: value,
               onTap: () => onChanged(true),
             ),
             const SizedBox(width: 40),
             _RadioOption(
-              label: 'No',
+              label: noText ?? 'No',
               isSelected: !value,
               onTap: () => onChanged(false),
             ),

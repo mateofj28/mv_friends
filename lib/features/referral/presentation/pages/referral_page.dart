@@ -85,25 +85,25 @@ class _ReferralPageState extends State<ReferralPage> {
                     ),
                     ReferralTextField(
                       controller: _idController,
-                      hint: 'Numero de cédula',
+                      hint: 'Numero de cedula',
                       keyboardType: TextInputType.number,
                       maxLength: 10,
                     ),
                     ReferralTextField(
                       controller: _emailController,
-                      hint: 'Correo electrónico',
+                      hint: 'Correo electronico',
                       keyboardType: TextInputType.emailAddress,
                     ),
                     ReferralTextField(
                       controller: _phoneController,
-                      hint: 'Teléfono',
+                      hint: 'Telefono',
                       keyboardType: TextInputType.phone,
                       maxLength: 10,
                     ),
                     const SizedBox(height: 20),
                     ReferralQuestion(
                       question:
-                          'A ti te atendió Carolina. ¿Deseas que también atienda a tu amigo?',
+                          'A ti te atendio Carolina. Deseas que tambien atienda a tu amigo?',
                       value: _wantsCarolinaAttention,
                       onChanged: (value) {
                         setState(() {

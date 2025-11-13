@@ -16,7 +16,7 @@ class ProfileStatsCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'EstadÃ­sticas de usuario',
+                'Estadisticas de usuario',
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
