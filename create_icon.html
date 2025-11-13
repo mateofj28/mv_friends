@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Ícono - Amigos Marval</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1E3A8A, #06B6D4, #22D3EE);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        h1 {
+            color: #1E3A8A;
+            margin-bottom: 20px;
+        }
+        canvas {
+            border: 2px solid #1E3A8A;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        button {
+            background: linear-gradient(135deg, #1E3A8A, #06B6D4);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .info {
+            margin-top: 20px;
+            color: #64748B;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 Generador de Ícono - Amigos Marval</h1>
+        <canvas id="iconCanvas" width="1024" height="1024"></canvas>
+        <br>
+        <button onclick="downloadIcon()">📥 Descargar Ícono (app_icon.png)</button>
+        <div class="info">
+            <p>Ícono de 1024x1024px optimizado para Android e iOS</p>
+            <p>Guarda el archivo como <strong>app_icon.png</strong> en <strong>assets/images/</strong></p>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('iconCanvas');
+        const ctx = canvas.getContext('2d');
+        const size = 1024;
+
+        // Crear gradiente de fondo
+        const gradient = ctx.createLinearGradient(0, 0, size, size);
+        gradient.addColorStop(0, '#1E3A8A');
+        gradient.addColorStop(0.5, '#06B6D4');
+        gradient.addColorStop(1, '#22D3EE');
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, size, size);
+
+        // Configuración
+        const centerX = size / 2;
+        const centerY = size / 2;
+        const scale = size / 1.8;
+
+        // Dibujar casa en blanco
+        ctx.fillStyle = 'white';
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 8;
+        ctx.lineJoin = 'round';
+
+        // Techo (triángulo)
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY - scale * 0.45);
+        ctx.lineTo(centerX - scale * 0.45, centerY - scale * 0.12);
+        ctx.lineTo(centerX + scale * 0.45, centerY - scale * 0.12);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // Chimenea
+        const chimneyLeft = centerX + scale * 0.22;
+        const chimneyTop = centerY - scale * 0.35;
+        const chimneyWidth = scale * 0.1;
+        const chimneyHeight = scale * 0.15;
+        ctx.fillRect(chimneyLeft, chimneyTop, chimneyWidth, chimneyHeight);
+
+        // Cuerpo de la casa (rectángulo redondeado)
+        const houseLeft = centerX - scale * 0.4;
+        const houseTop = centerY - scale * 0.12;
+        const houseWidth = scale * 0.8;
+        const houseHeight = scale * 0.57;
+        const radius = 20;
+
+        ctx.beginPath();
+        ctx.moveTo(houseLeft + radius, houseTop);
+        ctx.lineTo(houseLeft + houseWidth - radius, houseTop);
+        ctx.quadraticCurveTo(houseLeft + houseWidth, houseTop, houseLeft + houseWidth, houseTop + radius);
+        ctx.lineTo(houseLeft + houseWidth, houseTop + houseHeight - radius);
+        ctx.quadraticCurveTo(houseLeft + houseWidth, houseTop + houseHeight, houseLeft + houseWidth - radius, houseTop + houseHeight);
+        ctx.lineTo(houseLeft + radius, houseTop + houseHeight);
+        ctx.quadraticCurveTo(houseLeft, houseTop + houseHeight, houseLeft, houseTop + houseHeight - radius);
+        ctx.lineTo(houseLeft, houseTop + radius);
+        ctx.quadraticCurveTo(houseLeft, houseTop, houseLeft + radius, houseTop);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // Ventanas (ojos) - círculos semi-transparentes
+        ctx.fillStyle = 'rgba(30, 58, 138, 0.4)';
+        const eyeY = centerY + scale * 0.05;
+        const eyeRadius = scale * 0.08;
+        
+        // Ojo izquierdo
+        ctx.beginPath();
+        ctx.arc(centerX - scale * 0.18, eyeY, eyeRadius, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Ojo derecho
+        ctx.beginPath();
+        ctx.arc(centerX + scale * 0.18, eyeY, eyeRadius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Sonrisa (arco)
+        ctx.strokeStyle = 'rgba(30, 58, 138, 0.4)';
+        ctx.lineWidth = scale * 0.035;
+        ctx.lineCap = 'round';
+        const smileY = centerY + scale * 0.22;
+        const smileWidth = scale * 0.4;
+        
+        ctx.beginPath();
+        ctx.arc(centerX, smileY - scale * 0.08, smileWidth, 0.2, Math.PI - 0.2);
+        ctx.stroke();
+
+        // Puerta (rectángulo redondeado)
+        ctx.fillStyle = 'rgba(30, 58, 138, 0.4)';
+        const doorWidth = scale * 0.2;
+        const doorHeight = scale * 0.28;
+        const doorLeft = centerX - doorWidth / 2;
+        const doorTop = houseTop + houseHeight - doorHeight;
+        const doorRadius = doorWidth / 2;
+
+        ctx.beginPath();
+        ctx.moveTo(doorLeft + doorRadius, doorTop);
+        ctx.lineTo(doorLeft + doorWidth - doorRadius, doorTop);
+        ctx.quadraticCurveTo(doorLeft + doorWidth, doorTop, doorLeft + doorWidth, doorTop + doorRadius);
+        ctx.lineTo(doorLeft + doorWidth, doorTop + doorHeight);
+        ctx.lineTo(doorLeft, doorTop + doorHeight);
+        ctx.lineTo(doorLeft, doorTop + doorRadius);
+        ctx.quadraticCurveTo(doorLeft, doorTop, doorLeft + doorRadius, doorTop);
+        ctx.closePath();
+        ctx.fill();
+
+        function downloadIcon() {
+            const link = document.createElement('a');
+            link.download = 'app_icon.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>
