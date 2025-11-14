@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../../../../core/theme/theme_extensions.dart';
+import '../../../referral/data/providers/referral_provider.dart';
 
 class ProfileStatsCard extends StatelessWidget {
   const ProfileStatsCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final referralProvider = context.watch<ReferralProvider>();
+    
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -30,14 +34,14 @@ class ProfileStatsCard extends StatelessWidget {
             children: [
               Expanded(
                 child: _StatCard(
-                  value: '5',
+                  value: '${referralProvider.totalReferrals}',
                   label: 'Total de\nreferidos',
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _StatCard(
-                  value: '1',
+                  value: '${referralProvider.successfulReferrals}',
                   label: 'Referidos\nexitosos',
                 ),
               ),              

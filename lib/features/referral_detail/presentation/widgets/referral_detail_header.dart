@@ -17,12 +17,23 @@ class ReferralDetailHeader extends StatelessWidget {
             onPressed: () => Navigator.of(context).pop(),
           ),
           const SizedBox(width: 8),
-          Text(
-            'Detalle de referido',
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              color: context.primaryBlue,
+          Expanded(
+            child: Text(
+              'Detalle de referido',
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: context.primaryBlue,
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            },
+            child: Image.asset(
+              'assets/images/logo.png',
+              height: 40,
             ),
           ),
         ],

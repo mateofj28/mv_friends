@@ -5,6 +5,7 @@ import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/theme_provider.dart';
 import 'core/di/injection.dart';
+import 'features/referral/data/providers/referral_provider.dart';
 
 export 'core/theme/theme_provider.dart' show AppThemeMode;
 
@@ -13,8 +14,11 @@ void main() async {
   await Hive.initFlutter();
   setupDependencies();
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => ReferralProvider()),
+      ],
       child: const MyApp(),
     ),
   );

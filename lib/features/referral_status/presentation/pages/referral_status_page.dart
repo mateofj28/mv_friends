@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import '../widgets/referral_status_header.dart';
 import '../widgets/referral_status_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../../referral/data/providers/referral_provider.dart';
+import 'package:intl/intl.dart';
 
 class ReferralStatusPage extends StatefulWidget {
   const ReferralStatusPage({super.key});
@@ -15,8 +18,47 @@ class ReferralStatusPage extends StatefulWidget {
 class _ReferralStatusPageState extends State<ReferralStatusPage> {
   String? _selectedFilter;
 
+  Color _getStatusColor(String status) {
+    switch (status) {
+      case 'Sin Contactar':
+        return const Color(0xFF004952);
+      case 'Intentando Contactar':
+        return const Color(0xFF2196F3);
+      case 'Cotización':
+      case 'Cotizacion':
+        return const Color(0xFFFFA726);
+      case 'Opcionado':
+        return const Color(0xFF9C27B0);
+      case 'Cerrado Ganado':
+        return const Color(0xFF4CAF50);
+      default:
+        return const Color(0xFF004952);
+    }
+  }
+
+  double _getStatusProgress(String status) {
+    switch (status) {
+      case 'Sin Contactar':
+        return 0.2;
+      case 'Intentando Contactar':
+        return 0.4;
+      case 'Cotización':
+      case 'Cotizacion':
+        return 0.6;
+      case 'Opcionado':
+        return 0.8;
+      case 'Cerrado Ganado':
+        return 1.0;
+      default:
+        return 0.2;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final referralProvider = context.watch<ReferralProvider>();
+    final savedReferrals = referralProvider.referrals;
+
     final allReferrals = [
       {
         'userName': 'Juan Pérez',
@@ -90,10 +132,26 @@ class _ReferralStatusPageState extends State<ReferralStatusPage> {
       },
     ];
 
+    // Agregar los referidos guardados al inicio de la lista
+    final combinedReferrals = [
+      ...savedReferrals.map((ref) => {
+            'userName': ref.name,
+            'message': ref.message,
+            'status': ref.status,
+            'color': _getStatusColor(ref.status),
+            'progress': _getStatusProgress(ref.status),
+            'phone': ref.phone,
+            'email': ref.email,
+            'cedula': ref.cedula,
+            'referralDate': DateFormat('dd/MM/yyyy').format(ref.createdAt),
+          }),
+      ...allReferrals,
+    ];
+
     // Filtrar referidos según el filtro seleccionado
     final filteredReferrals = _selectedFilter == null
-        ? allReferrals
-        : allReferrals.where((ref) => ref['status'] == _selectedFilter).toList();
+        ? combinedReferrals
+        : combinedReferrals.where((ref) => ref['status'] == _selectedFilter).toList();
 
     final filterOptions = [
       'Sin Contactar',
@@ -183,6 +241,7 @@ class _ReferralStatusPageState extends State<ReferralStatusPage> {
                             status: referral['status'] as String,
                             statusColor: referral['color'] as Color,
                             progress: referral['progress'] as double,
+                            cedula: referral['cedula'] as String?,
                             phone: referral['phone'] as String?,
                             email: referral['email'] as String?,
                             referralDate: referral['referralDate'] as String?,

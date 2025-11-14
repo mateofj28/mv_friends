@@ -26,7 +26,10 @@ class ReferralDetailPage extends StatelessWidget {
                 child: Column(
                   children: [
                     ReferralUserHeader(
-                      userName: referral.userName,                      
+                      userName: referral.userName,
+                      cedula: referral.cedula,
+                      email: referral.email,
+                      phone: referral.phone,
                       referralDate: referral.referralDate,
                     ),
                     StatusTimeline(

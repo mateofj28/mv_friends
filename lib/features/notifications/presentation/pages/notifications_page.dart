@@ -79,19 +79,14 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 icon: Icon(Icons.arrow_back, color: context.primaryBlue),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              Expanded(
-                child: Text(
-                  'Notificaciones',
-                  style: GoogleFonts.poppins(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: context.primaryBlue,
-                  ),
+              const SizedBox(width: 8),
+              Text(
+                'Notificaciones',
+                style: GoogleFonts.poppins(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: context.primaryBlue,
                 ),
-              ),
-              Image.asset(
-                'assets/images/logo.png',
-                height: 40,
               ),
             ],
           ),

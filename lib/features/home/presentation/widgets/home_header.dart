@@ -4,7 +4,12 @@ import '../../../../core/theme/theme_extensions.dart';
 import '../../../notifications/presentation/pages/notifications_page.dart';
 
 class HomeHeader extends StatelessWidget {
-  const HomeHeader({super.key});
+  final VoidCallback? onLogoTap;
+
+  const HomeHeader({
+    super.key,
+    this.onLogoTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +19,12 @@ class HomeHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(
-            'assets/images/logo.png',
-            height: 48,
+          GestureDetector(
+            onTap: onLogoTap,
+            child: Image.asset(
+              'assets/images/logo.png',
+              height: 48,
+            ),
           ),
           // Notification icon
           GestureDetector(

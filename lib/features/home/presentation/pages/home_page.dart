@@ -4,6 +4,7 @@ import '../widgets/home_header.dart';
 import '../widgets/home_content.dart';
 import '../widgets/floating_chat_button.dart';
 import '../../../profile/presentation/widgets/profile_content.dart';
+import '../../../chatbot/presentation/pages/chatbot_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,12 +23,24 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onChatTap() {
-    // TODO: Implement chat functionality
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const ChatbotPage(),
+      ),
+    );
   }
 
   void _navigateToProfile() {
     _pageController.animateToPage(
       1,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void _navigateToHome() {
+    _pageController.animateToPage(
+      0,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
@@ -41,7 +54,7 @@ class _HomePageState extends State<HomePage> {
         bottom: false,
         child: Column(
           children: [
-            const HomeHeader(),
+            HomeHeader(onLogoTap: _navigateToHome),
             Expanded(
               child: PageView(
                 controller: _pageController,

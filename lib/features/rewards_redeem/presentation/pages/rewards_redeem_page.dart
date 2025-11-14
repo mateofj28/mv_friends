@@ -118,9 +118,14 @@ class _RewardsRedeemPageState extends State<RewardsRedeemPage> {
               ),
             ),
           ),
-          Image.asset(
-            'assets/images/logo.png',
-            height: 40,
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            },
+            child: Image.asset(
+              'assets/images/logo.png',
+              height: 40,
+            ),
           ),
         ],
       ),

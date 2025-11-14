@@ -11,6 +11,7 @@ class ReferralStatusCard extends StatelessWidget {
   final String status;
   final Color statusColor;
   final double progress;
+  final String? cedula;
   final String? phone;
   final String? email;
   final String? referralDate;
@@ -22,6 +23,7 @@ class ReferralStatusCard extends StatelessWidget {
     required this.status,
     required this.statusColor,
     required this.progress,
+    this.cedula,
     this.phone,
     this.email,
     this.referralDate,
@@ -50,6 +52,7 @@ class ReferralStatusCard extends StatelessWidget {
       onTap: () {
         final referralDetail = ReferralDetail(
           userName: userName,
+          cedula: cedula ?? '1234567890',
           phone: phone ?? '+57 300 123 4567',
           email: email ?? 'usuario@email.com',
           referralDate: referralDate ?? '01/01/2024',

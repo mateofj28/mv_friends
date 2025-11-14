@@ -1,5 +1,6 @@
 class ReferralDetail {
   final String userName;
+  final String cedula;
   final String phone;
   final String email;
   final String referralDate;
@@ -8,6 +9,7 @@ class ReferralDetail {
 
   const ReferralDetail({
     required this.userName,
+    required this.cedula,
     required this.phone,
     required this.email,
     required this.referralDate,

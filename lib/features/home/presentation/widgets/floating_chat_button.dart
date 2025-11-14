@@ -17,7 +17,7 @@ class FloatingChatButton extends StatelessWidget {
       backgroundColor: context.surface,
       elevation: 4,
       child: Icon(
-        Iconsax.message,
+        Iconsax.messages_1,
         color: context.darkNavy,
         size: 28,
       ),
